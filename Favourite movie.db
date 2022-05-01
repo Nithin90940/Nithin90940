@@ -1,0 +1,39 @@
+import sqlite3
+
+conn = sqlite3.connect('favourite movie.db')
+"""
+conn.execute('''CREATE TABLE MOVIE
+         (ID INT PRIMARY KEY     NOT NULL,
+         Movie_name           TEXT    NOT NULL,
+         Lead_actor            TEXT     NOT NULL,
+         Lead_actress        TEXT       NOT NULL,
+         Year_of_release        INT     NOT NULL,
+         Director_name      TEXT        NOT NULL);''')
+conn.execute("INSERT INTO MOVIE (ID,Movie_name,Lead_actor,Lead_actress,Year_of_release,Director_name) \
+      VALUES (1, 'Run', madhavan', 'mwera jasmine', 2002, 'N.linguswamy')");
+conn.execute("INSERT INTO MOVIE (ID,Movie_name,Lead_actor,Lead_actress,Year_of_release,Director_name) \
+      VALUES (2, 'Eli', 'vadivelu', 'sadha', 2015, 'Yuvaraj dhayalan')");
+conn.execute("INSERT INTO MOVIE (ID,Movie_name,Lead_actor,Lead_actress,Year_of_release,Director_name) \
+      VALUES (3, 'lakshmi', 'prabhu deva', 'aiswarya rajesh', 2008, 'A.L.Vijay')");
+conn.commit()
+conn.close()
+"""
+
+
+print(" 1. Run \n 2. Eli 2\n 3. Lakshmi")
+choice = int(input("Enter your choice: "))
+
+val = conn.execute("SELECT * from MOVIE WHERE ID is "+str(choice))
+for v in val:
+    U = v[0]
+    V = v[1]
+    W = v[2]
+    X = v[3]
+    Y = v[4]
+    Z = v[5]
+print("Movie ID      : ",U)
+print("Movie Name    : ",V)
+print("Lead Actor    : ",W)
+print("Lead Actress  : ",X)
+print("Released Year : ",Y)
+print("Director      : ",Z)
